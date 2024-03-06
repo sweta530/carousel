@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector(".carousel-container");
-    const carouselItems = document.querySelectorAll(".carousel-container .carousel-item");
+    const carouselItems = document.querySelectorAll(".carousel-item");
     var indicators = document.querySelectorAll('.carousel-number li');
     let currentIndex = 0;
+    let translateX = 0;
 
     function showSlide(index) {
         if (index >= 0 && index < carouselItems.length) {
-            carouselItems.forEach(item => {
-                item.classList.remove('active');
-            });
-            carouselItems[index].classList.add('active');
+            translateX = -index * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
+            currentIndex = index;
             
             indicators.forEach(indicator => {
                 indicator.classList.remove('active');
